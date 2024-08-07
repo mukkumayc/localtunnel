@@ -49,6 +49,9 @@ const { argv } = yargs
   .option('print-requests', {
     describe: 'Print basic request info',
   })
+  .option('auth', {
+    describe: 'Basic auth password',
+  })
   .require('port')
   .boolean('local-https')
   .boolean('allow-invalid-cert')
@@ -73,6 +76,7 @@ if (typeof argv.port !== 'number') {
     local_key: argv.localKey,
     local_ca: argv.localCa,
     allow_invalid_cert: argv.allowInvalidCert,
+    auth: argv.auth,
   }).catch(err => {
     throw err;
   });
